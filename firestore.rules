@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    // Doctors CMS
+    match /doctors/{docId} {
+      allow read: if true;
+      allow create, update: if isValidId(docId) &&
+                            incoming().nameEn is string && incoming().nameEn.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Gallery items CMS
+    match /gallery_items/{itemId} {
+      allow read: if true;
+      allow create, update: if isValidId(itemId) &&
+                            incoming().titleEn is string && incoming().titleEn.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Events CMS
+    match /events/{eventId} {
+      allow read: if true;
+      allow create, update: if isValidId(eventId) &&
+                            incoming().titleEn is string && incoming().titleEn.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Testimonials CMS
+    match /testimonials/{testId} {
+      allow read: if true;
+      allow create, update: if isValidId(testId) &&
+                            incoming().nameEn is string && incoming().nameEn.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Trustee applications
+    match /trustee_applications/{appId} {
+      allow read: if true;
+      allow create, update: if isValidId(appId) &&
+                            incoming().name is string && incoming().name.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Member applications
+    match /member_applications/{appId} {
+      allow read: if true;
+      allow create, update: if isValidId(appId) &&
+                            incoming().name is string && incoming().name.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Volunteers
+    match /volunteers/{appId} {
+      allow read: if true;
+      allow create, update: if isValidId(appId) &&
+                            incoming().name is string && incoming().name.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Contact messages
+    match /contact_messages/{msgId} {
+      allow read: if true;
+      allow create, update: if isValidId(msgId) &&
+                            incoming().name is string && incoming().name.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Donations ledger
+    match /donations/{donId} {
+      allow read: if true;
+      allow create, update: if isValidId(donId) &&
+                            incoming().donorName is string && incoming().donorName.size() <= 200;
+      allow delete: if true;
+    }
+
+    // Global default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

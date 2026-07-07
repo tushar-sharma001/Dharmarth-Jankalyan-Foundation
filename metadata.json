@@ -1,0 +1,6 @@
+{
+  "name": "Dharmarth Jankalyan Foundation",
+  "description": "Official website for Dharmarth Jankalyan Foundation (धर्मार्थ जनकल्याण फाउंडेशन), offering free general OPD, medicines, healthcare awareness, and social services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

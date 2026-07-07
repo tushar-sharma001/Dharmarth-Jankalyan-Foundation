@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Poppins", "Noto Sans Devanagari", sans-serif;
+  --font-display: "Poppins", "Noto Sans Devanagari", sans-serif;
+
+  /* Natural Tones custom brand variables */
+  --color-brand-navy: #0A2E6E;
+  --color-brand-green: #0B5E3B;
+  --color-brand-orange: #F57C00;
+  --color-brand-gold: #D4AF37;
+
+  /* Remap standard tailwind colors to natural tones palette for instant site-wide conversion */
+  --color-amber-50: #FFF9F2;
+  --color-amber-100: #FFEBD6;
+  --color-amber-500: #F57C00;
+  --color-amber-600: #D46B00;
+  --color-amber-700: #B35A00;
+
+  --color-emerald-50: #F0F9F5;
+  --color-emerald-100: #D1EFE3;
+  --color-emerald-500: #0B5E3B;
+  --color-emerald-600: #0B5E3B;
+  --color-emerald-700: #094E31;
+  --color-emerald-800: #073E27;
+
+  --color-indigo-50: #F4F7FB;
+  --color-indigo-100: #E2ECF7;
+  --color-indigo-500: #0A2E6E;
+  --color-indigo-600: #0A2E6E;
+  --color-indigo-700: #082457;
+  --color-indigo-800: #061B41;
+
+  --color-blue-50: #F4F7FB;
+  --color-blue-100: #E2ECF7;
+  --color-blue-500: #0A2E6E;
+  --color-blue-600: #0A2E6E;
+  --color-blue-750: #082457;
+
+  --color-yellow-50: #FFFDF0;
+  --color-yellow-100: #FFFAD1;
+  --color-yellow-500: #D4AF37;
+  --color-yellow-600: #B8932C;
+}
+
+/* Custom fine glassmorphism rules */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass {
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 124, 0, 0.3);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 124, 0, 0.6);
+}

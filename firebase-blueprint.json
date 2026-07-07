@@ -1,0 +1,184 @@
+{
+  "entities": {
+    "Doctor": {
+      "title": "Doctor",
+      "description": "Onboarded specialist doctor at the dispensary",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "nameHi": { "type": "string" },
+        "specialtyEn": { "type": "string" },
+        "specialtyHi": { "type": "string" },
+        "availabilityEn": { "type": "string" },
+        "availabilityHi": { "type": "string" },
+        "image": { "type": "string" }
+      },
+      "required": ["id", "nameEn", "specialtyEn", "image"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Image and caption displayed in the gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titleEn": { "type": "string" },
+        "titleHi": { "type": "string" },
+        "category": { "type": "string", "enum": ["clinic", "doctors", "events", "camps", "service"] },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["id", "titleEn", "category", "imageUrl"]
+    },
+    "EventItem": {
+      "title": "EventItem",
+      "description": "Dispensary camps or wellness events",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "titleEn": { "type": "string" },
+        "titleHi": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "descriptionEn": { "type": "string" },
+        "descriptionHi": { "type": "string" },
+        "status": { "type": "string", "enum": ["upcoming", "completed"] }
+      },
+      "required": ["id", "titleEn", "date", "descriptionEn", "status"]
+    },
+    "TrusteeApplication": {
+      "title": "TrusteeApplication",
+      "description": "Application form submitted to become a lifetime trustee",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "occupation": { "type": "string" },
+        "address": { "type": "string" },
+        "reason": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] }
+      },
+      "required": ["id", "name", "phone", "email", "occupation", "address", "reason", "createdAt", "status"]
+    },
+    "MemberApplication": {
+      "title": "MemberApplication",
+      "description": "Monthly commitment application form",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "monthlyCommitment": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] }
+      },
+      "required": ["id", "name", "phone", "email", "monthlyCommitment", "createdAt", "status"]
+    },
+    "VolunteerApplication": {
+      "title": "VolunteerApplication",
+      "description": "Volunteer registry registration form",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "skills": { "type": "string" },
+        "address": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] }
+      },
+      "required": ["id", "name", "phone", "email", "skills", "address", "createdAt", "status"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Inquiries from the contact page",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["unread", "read"] }
+      },
+      "required": ["id", "name", "phone", "email", "subject", "message", "createdAt", "status"]
+    },
+    "DonationRecord": {
+      "title": "DonationRecord",
+      "description": "A payment donation record received by the organization",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "donorName": { "type": "string" },
+        "amount": { "type": "integer" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["completed", "pending"] }
+      },
+      "required": ["id", "donorName", "amount", "phone", "email", "paymentMethod", "createdAt", "status"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Testimonials and feedback from beneficiaries",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nameEn": { "type": "string" },
+        "nameHi": { "type": "string" },
+        "roleEn": { "type": "string" },
+        "roleHi": { "type": "string" },
+        "quoteEn": { "type": "string" },
+        "quoteHi": { "type": "string" },
+        "rating": { "type": "integer" },
+        "image": { "type": "string" }
+      },
+      "required": ["id", "nameEn", "quoteEn", "rating"]
+    }
+  },
+  "firestore": {
+    "/doctors/{id}": {
+      "schema": "Doctor",
+      "description": "Specialist doctors CMS collection"
+    },
+    "/gallery_items/{id}": {
+      "schema": "GalleryItem",
+      "description": "Gallery images CMS collection"
+    },
+    "/events/{id}": {
+      "schema": "EventItem",
+      "description": "Events and camps CMS collection"
+    },
+    "/testimonials/{id}": {
+      "schema": "Testimonial",
+      "description": "Beneficiary testimonials CMS collection"
+    },
+    "/trustee_applications/{id}": {
+      "schema": "TrusteeApplication",
+      "description": "Trustee applications storage"
+    },
+    "/member_applications/{id}": {
+      "schema": "MemberApplication",
+      "description": "Monthly member commitments"
+    },
+    "/volunteers/{id}": {
+      "schema": "VolunteerApplication",
+      "description": "Volunteer registry applications"
+    },
+    "/contact_messages/{id}": {
+      "schema": "ContactMessage",
+      "description": "Contact messages storage"
+    },
+    "/donations/{id}": {
+      "schema": "DonationRecord",
+      "description": "Donations records ledger"
+    }
+  }
+}
