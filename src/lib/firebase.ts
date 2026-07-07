@@ -25,7 +25,7 @@ import {
 
 // Hardcoded config based on firebase-applet-config.json
 const firebaseConfig = {
-  apiKey: "AIzaSyCiftGKXL40PTrNQwKmeD1BG2nBF2hzIRs",
+  apiKey: "GEMINI_API_KEY",
   authDomain: "gmp-demo-project-161173718.firebaseapp.com",
   projectId: "gmp-demo-project-161173718",
   storageBucket: "gmp-demo-project-161173718.firebasestorage.app",
